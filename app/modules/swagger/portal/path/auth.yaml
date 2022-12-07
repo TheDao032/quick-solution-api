@@ -1,0 +1,25 @@
+paths:
+  /auth/token:
+    post:
+      tags:
+        - auth
+      summary: Get token to login system
+      description: ''
+      operationId: authToken
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: The user name for login
+          schema:
+            $ref: '#/definitions/bodyAuthToken'
+      responses:
+        '200':
+          description: Successful Operation
+          schema:
+            $ref: '#/definitions/resAuthToken'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/res422'

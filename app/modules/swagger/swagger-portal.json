@@ -1,0 +1,285 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a API for project RUBY.",
+    "version": "1.0.0",
+    "title": "Swagger RUBY",
+    "contact": {
+      "email": "rubyteam@yopmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "tags": [
+    {
+      "name": "auth",
+      "description": "API authenication"
+    },
+    {
+      "name": "user",
+      "description": "API user"
+    },
+    {
+      "name": "user group",
+      "description": "API user group"
+    },
+    {
+      "name": "country",
+      "description": "API country"
+    },
+    {
+      "name": "city",
+      "description": "API city"
+    },
+    {
+      "name": "province",
+      "description": "API province"
+    },
+    {
+      "name": "district",
+      "description": "API district"
+    },
+    {
+      "name": "ward",
+      "description": "API ward"
+    },
+    {
+      "name": "department",
+      "description": "API department"
+    },
+    {
+      "name": "function",
+      "description": "API function"
+    },
+    {
+      "name": "function group",
+      "description": "API function group"
+    },
+    {
+      "name": "menu",
+      "description": "API menu"
+    },
+    {
+      "name": "position",
+      "description": "API position"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/auth/token": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Get token to login system",
+        "description": "",
+        "operationId": "authToken",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The user name for login",
+            "schema": {
+              "$ref": "#/definitions/ReqAuthToken"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "schema": {
+              "$ref": "#/definitions/ResAuthToken"
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/Res422"
+            }
+          }
+        }
+      }
+    },
+    "/auth/refresh-token": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Get token to login system",
+        "description": "",
+        "operationId": "authRefreshToken",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The user name for login",
+            "schema": {
+              "required": [
+                "user_name",
+                "password",
+                "platform"
+              ],
+              "properties": {
+                "user_name": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "platform": {
+                  "type": "string",
+                  "enum": [
+                    "portal",
+                    "mobile"
+                  ],
+                  "default": "portal"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "schema": {
+              "$ref": "#/definitions/ResAuthToken"
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/Res422"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Res422": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "default": "200"
+        },
+        "statusText": {
+          "type": "string",
+          "default": "Unprocessable Entity"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "field": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "messages": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReqAuthToken": {
+      "type": "object",
+      "required": [
+        "user_name",
+        "password",
+        "platform"
+      ],
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string",
+          "enum": [
+            "portal",
+            "mobile"
+          ],
+          "default": "portal"
+        }
+      }
+    },
+    "ResAuthToken": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "tokenKey": {
+              "type": "string"
+            },
+            "tokenType": {
+              "type": "string"
+            },
+            "accessToken": {
+              "type": "string"
+            },
+            "tokenExpireAt": {
+              "type": "number"
+            },
+            "refreshToken": {
+              "type": "string"
+            },
+            "refreshTokenExpireAt": {
+              "type": "number"
+            }
+          }
+        },
+        "message": {
+          "type": "string",
+          "default": "Logged in successfully!"
+        },
+        "status": {
+          "type": "number",
+          "default": "200"
+        },
+        "errors": {
+          "type": "object"
+        }
+      },
+      "example": {
+        "data": {
+          "tokenKey": "Authorization",
+          "tokenType": "Bearer",
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiQTI5REQ3RTAtQ0EzRC0xMUU5LTlDN0QtOUJBNDA5NkQzQzYyIiwidXNlcl9uYW1lIjoiYWRtaW5pc3RyYXRvciIsImlhdCI6MTU2NzcwMjAxOCwiZXhwIjoxNTY3NzA1NjE4fQ.XMuGtw0UwGVvVDztjDefElm1Ae2gkPTCeCht8U0lZf8",
+          "tokenExpireAt": 1567705560505,
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiQTI5REQ3RTAtQ0EzRC0xMUU5LTlDN0QtOUJBNDA5NkQzQzYyIiwidXNlcl9uYW1lIjoiYWRtaW5pc3RyYXRvciIsImlhdCI6MTU2NzcwMjAxOCwiZXhwIjoxNTY3Nzg4NDE4fQ.jKJ1IpsTi5ln2hdpdG7uA9UWyJ-vHIvLtB6NBYr65Xw",
+          "refreshTokenExpireAt": 1567788360510
+        },
+        "message": "Logged in successfully!",
+        "status": 200,
+        "errors": null
+      }
+    }
+  }
+}

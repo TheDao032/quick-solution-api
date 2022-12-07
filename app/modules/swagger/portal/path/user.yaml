@@ -1,0 +1,48 @@
+paths:
+  /user:
+    get:
+      tags:
+        - user
+      summary: Get list users
+      description: ''
+      operationId: getUser
+      produces:
+        - application/json
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search by keyword
+        - in: query
+          name: birthday
+          schema:
+            type: string
+          description: Search by birthday. Format dd/mm/yyyy
+        - in: query
+          name: gender
+          schema:
+            type: number
+          enum: [1,2,3]
+          default: 2
+          description: Search by gender
+        - in: query
+          name: department_id
+          schema:
+            type: number
+          description: Search by deparment
+        - in: query
+          name: position_id
+          schema:
+            type: number
+          description: Search by postion
+        - $ref: "#/definitions/parameters/sortorder"
+        - $ref: "#/definitions/parameters/page"
+        - $ref: "#/definitions/parameters/itemsPerPage"
+      responses:
+        '200':
+          description: Successful Operation
+          schema:
+            $ref: '#/definitions/resCommon'

@@ -1,0 +1,27 @@
+tags:
+  - name: auth
+    description: API authenication
+  - name: user
+    description: API user
+  - name: user group
+    description: API user group
+  - name: country
+    description: API country
+  - name: city
+    description: API city
+  - name: province
+    description: API province
+  - name: district
+    description: API district
+  - name: ward
+    description: API ward
+  - name: department
+    description: API department
+  - name: function
+    description: API function
+  - name: function group
+    description: API function group
+  - name: menu
+    description: API menu
+  - name: position
+    description: API position

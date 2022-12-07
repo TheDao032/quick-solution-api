@@ -1,0 +1,68 @@
+{
+  "name": "ruby-api",
+  "version": "0.0.1",
+  "description": "Rest API for Ruby System",
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "lint:check": "eslint '**/*.js' --quiet",
+    "start": "nodemon index.js",
+    "dev": "cross-env RUN_LOCAL=yes nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://27.71.224.44/git/ruby-api.git"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "eslint": "^6.4.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^3.0.5",
+    "nodemon": "^1.19.2"
+  },
+  "dependencies": {
+    "app-root-path": "^2.2.1",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cache-manager": "^2.10.0",
+    "cache-manager-fs": "^1.0.8",
+    "cors": "^2.8.5",
+    "crypto-js": "^3.1.9-1",
+    "custom-env": "^1.0.2",
+    "dotenv": "^8.1.0",
+    "excel4node": "^1.7.2",
+    "express": "^4.17.1",
+    "express-useragent": "^1.0.13",
+    "express-validation": "^1.0.2",
+    "helmet": "^3.21.1",
+    "http-status": "^1.3.2",
+    "is-base64": "^1.0.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mkdirp-promise": "^5.0.1",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "mssql": "^5.1.0",
+    "nodemailer": "^6.4.6",
+    "query-string": "^6.8.3",
+    "require-context": "^1.1.0",
+    "sequelize": "^5.19.0",
+    "soap": "^0.30.0",
+    "stjs": "0.0.5",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui-express": "^4.1.1",
+    "tedious": "^6.4.0",
+    "uuid": "^3.3.3",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.1.0"
+  }
+}

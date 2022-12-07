@@ -1,0 +1,43 @@
+definitions:
+  resCommon:
+    type: object
+    properties:
+      data:
+        type: object
+      message:
+        type: string
+      status:
+        type: number
+      errors:
+        type: object
+    example:
+      data:
+        tokenKey: Authorization
+        tokenType: Bearer
+      message: Logged in successfully!
+      status: 200
+      errors: null
+
+  parameters:
+    sortorder:
+      in: query
+      name: sortorder
+      schema:
+        type: number
+      enum: [0,1]
+      default: 0
+      description: Order data
+    page:
+      in: query
+      name: page
+      schema:
+        type: number
+      default: 1
+      description: Number page
+    itemsPerPage:
+      in: query
+      name: itemsPerPage
+      schema:
+        type: number
+      default: 25
+      description: Number of items per page
