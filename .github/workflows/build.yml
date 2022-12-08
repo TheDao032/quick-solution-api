@@ -25,6 +25,5 @@ jobs:
         shell: bash
         id: build-admin
         run: |
-          cd Program/Admin/Api
           npm install
           npm run lint:check
