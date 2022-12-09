@@ -1,6 +1,13 @@
 name: Deploy
 
 on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        default: "dev"
+
+on:
   push:
     branches:
       - main

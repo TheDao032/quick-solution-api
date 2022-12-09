@@ -1,6 +1,13 @@
 name: Build Admin Source
 
 on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        default: "dev"
+
+on:
   push:
     branches:
       - "*"
