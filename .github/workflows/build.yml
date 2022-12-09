@@ -7,14 +7,6 @@ on:
         type: string
         default: "dev"
 
-on:
-  push:
-    branches:
-      - "*"
-  pull_request:
-    branches:
-      - "*"
-
 jobs:
   build:
     name: Build

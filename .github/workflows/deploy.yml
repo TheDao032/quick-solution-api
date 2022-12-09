@@ -7,11 +7,6 @@ on:
         type: string
         default: "dev"
 
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build:
     name: Deploy Heroku
